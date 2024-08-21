@@ -4,12 +4,12 @@ services:
     build: ./node-backend
     ports:
       - "8080:8080"
-    # volumes:
-    #   - ./node-backend:/usr/src/app
+    volumes:
+      - ./node-backend:/usr/src/app
 
   frontend:
     build: ./react-frontend
     ports:
-      - "80:80"
-    # volumes:
-    #   - ./react-frontend:/usr/src/app
+      - "3000:3000"
+    volumes:
+      - ./react-frontend/src:/usr/src/app/src

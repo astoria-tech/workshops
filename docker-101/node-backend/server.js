@@ -5,13 +5,10 @@ const cors = require("cors");
 const app = express();
 const port = 8080;
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// Enable CORS for localhost:80
+// Enable CORS to allow the frontend to fetch this API
 app.use(
   cors({
-    origin: "http://localhost",
+    origin: "http://localhost:3000",
   })
 );
 
@@ -21,7 +18,7 @@ app.get("/api/posts", (req, res) => {
     {
       id: 1,
       title: "First Post",
-      content: "This is the first post.",
+      content: "This is the first post!",
       created: new Date("2024-04-01T00:00:00Z"),
     },
     {
@@ -32,11 +29,6 @@ app.get("/api/posts", (req, res) => {
     },
   ];
   res.json(posts);
-});
-
-// Catch-all handler to serve the React app for any other requests
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
 app.listen(port, () => {
