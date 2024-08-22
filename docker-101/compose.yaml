@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./node-backend:/usr/src/app
+      - ./node-backend/server.js:/usr/src/app/server.js
 
   frontend:
     build: ./react-frontend
